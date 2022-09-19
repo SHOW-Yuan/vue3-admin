@@ -1,4 +1,18 @@
 
 <template>
-    <h1>这是关于页面</h1>
+    <div @click="add">
+        {{count}}
+    </div>
 </template>
+    
+<script setup>
+import { computed } from 'vue'
+// import { useStore } from 'vuex'
+import { useStore } from '../store/gvuex';
+let store = useStore()
+let count = computed(() => store.state.count)
+
+function add() {
+    store.commit('add')
+}
+</script>
